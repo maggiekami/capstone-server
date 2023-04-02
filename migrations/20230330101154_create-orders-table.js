@@ -5,6 +5,7 @@ exports.up = function (knex) {
       table.string("email").notNullable().unique();
       table.string("fName").notNullable();
       table.string("lName").notNullable();
+      table.string("password", 255).notNullable();
     })
     .createTable("product", (table) => {
       table.increments("id").primary();
@@ -26,7 +27,6 @@ exports.up = function (knex) {
       table.string("fName").notNullable();
       table.string("lName").notNullable();
       table.decimal("total", 8, 2).notNullable();
-      table.timestamps(true, true);
     })
     .createTable("product_order", (table) => {
       table

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "dev": "nodemon index",
+    "start": "node server",
+    "dev": "nodemon server",
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
     "rollback": "knex migrate:rollback"
@@ -14,6 +14,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "knex": "^2.4.2",
