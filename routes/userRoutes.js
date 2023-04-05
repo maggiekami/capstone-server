@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const { v4: uuid } = require("uuid");
 
-const app = express();
+// const app = express();
 
 // router.post("/register", async (req, res) => {
 //   if (
