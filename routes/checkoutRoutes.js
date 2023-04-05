@@ -3,10 +3,13 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 
+router.use(express.json());
+
 require("dotenv").config({ path: "./.env" });
 
 // app.use(express.static(__dirname));
-app.use(express.urlencoded());
+// app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 app.post("/create-checkout-session", async (req, res) => {
   const domainURL = process.env.FRONTEND_URL;
