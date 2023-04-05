@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
         message: `Could not find product with ID: ${productId}`,
       });
     }
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
     res.status(500).json({
       error: true,

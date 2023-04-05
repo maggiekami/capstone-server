@@ -4,7 +4,7 @@ const router = express.Router();
 
 require("dotenv").config({ path: "./.env" });
 
-app.use(express.static(__dirname));
+// app.use(express.static(__dirname));
 app.use(express.urlencoded());
 
 app.post("/create-checkout-session", async (req, res) => {

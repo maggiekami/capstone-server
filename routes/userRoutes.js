@@ -87,36 +87,32 @@ const app = express();
 //     });
 // });
 
-app.post("/register", (req, res) => {
-  console.log(req);
-  const { email, fName, lName, password } = req.body;
+// app.post("/register", (req, res) => {
+//   console.log(req);
+//   const { email, fName, lName, password } = req.body;
 
-  knex("user")
-    .select()
-    .where("email", email)
-    .then((data) => {
-      if (!data[0]) {
-        bcrypt.hash(password, saltRounds, function (err, hash) {
-          let password = hash;
-          let newUser = { email, fName, lName, password };
-          knex
-            .insert(newUser)
-            .into("user")
-            .then((data) => {
-              res.send("registered");
-            })
-            .catch((err) => {
-              res.status(500).send("There was an error");
-            });
-        });
-      } else {
-        res.send("email already registered");
-      }
-    });
-});
-
-// router.post("/login", (req, res) => {
-//     const {email, password}
-// })
+//   knex("user")
+//     .select()
+//     .where("email", email)
+//     .then((data) => {
+//       if (!data[0]) {
+//         bcrypt.hash(password, saltRounds, function (err, hash) {
+//           let password = hash;
+//           let newUser = { email, fName, lName, password };
+//           knex
+//             .insert(newUser)
+//             .into("user")
+//             .then((data) => {
+//               res.send("registered");
+//             })
+//             .catch((err) => {
+//               res.status(500).send("There was an error");
+//             });
+//         });
+//       } else {
+//         res.send("email already registered");
+//       }
+//     });
+// });
 
 module.exports = router;
