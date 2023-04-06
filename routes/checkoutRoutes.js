@@ -1,21 +1,23 @@
-const knex = require("knex")(require("../knexfile"));
 const express = require("express");
 const app = express();
+const { resolve } = require("path");
 const router = express.Router();
-
-router.use(express.json());
-
 require("dotenv").config({ path: "./.env" });
+
+const cors = require("cors");
+
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 // app.use(express.static(__dirname));
 // app.use(express.urlencoded());
-app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
-app.post("/create-checkout-session", async (req, res) => {
+router.post("/", async (req, res) => {
+  console.log("create-checkout-session called");
+
   const domainURL = process.env.FRONTEND_URL;
 
-  // will require axios to include list items object along with quantity & price details
-  const { cart_items, quantity } = req.body;
+  const { quantity } = req.body;
 
   // Create new Checkout Session for the order
   // Other optional params include:
@@ -28,6 +30,21 @@ app.post("/create-checkout-session", async (req, res) => {
     mode: "payment",
 
     // method 1
+    // line_items: [
+    //   // {
+    //   //   price: process.env.PRICE,
+    //   //   quantity: quantity
+    //   // },
+    //   {
+    //     price: "price_1MsuYYHADBSmAz9ICnsQdj01",
+    //     quantity: 1
+    //   },
+    //   {
+    //     price: "price_1MsuYnHADBSmAz9IYo4p31dbˆ",
+    //     quantity: 1
+    //   },
+
+    // method 2
     line_items: [
       {
         price_data: {
@@ -51,7 +68,7 @@ app.post("/create-checkout-session", async (req, res) => {
       },
     ],
 
-    // method 2
+    // method 3
     // payment_method_types: ["card"],
     // mode: "payment",
     // line_items: data.map((item) => {

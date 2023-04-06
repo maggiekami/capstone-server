@@ -1,23 +1,31 @@
 const knex = require("knex")(require("../knexfile"));
 const express = require("express");
+const app = express();
 const router = express.Router();
 
-router.post("/order", async (req, res) => {
-  //   add validation
+app.use(express.json());
+
+// app.use(express.static(__dirname));
+// app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
+
+router.post("/", async (req, res) => {
+  // add validation
 
   try {
     const newOrderDetails = await knex("order").insert({
+      //   user_id: "MAKE USER ID OF HERE",
       address: req.body.address,
       fName: req.body.fName,
       lName: req.body.lName,
       total: req.body.total,
     });
 
-    const newWarehouse = await knex("order").where({
+    const newOrder = await knex("order").where({
       id: newOrderDetails[0],
     });
 
-    res.status(201).json(newWarehouse);
+    res.status(201).json(newOrder);
   } catch (error) {
     res.status(500).json({
       error: true,
@@ -25,3 +33,5 @@ router.post("/order", async (req, res) => {
     });
   }
 });
+
+module.exports = router;

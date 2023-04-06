@@ -10,12 +10,13 @@ const saltRounds = 10;
 
 const productsRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
-const checkoutRoutes = require("./routes/checkoutRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+const checkoutRoutes = require("./routes/checkoutRoutes");
+
+app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 
 app.use(express.json());
 app.use(express.static("public"));
-app.use(cors({ origin: process.env.FRONTEND_URL }));
 
 app.use("/product", productsRoutes);
 app.use("/auth", userRoutes);
