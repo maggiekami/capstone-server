@@ -8,6 +8,5 @@ module.exports = [
     fName: "John",
     lName: "Smith",
     total: 15,
-    // created_at: knex.fn.now(),
   },
 ];

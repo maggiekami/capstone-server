@@ -8,7 +8,7 @@ module.exports = [
   },
   {
     id: 2,
-    name: "Cactus plant pot",
+    name: "Cactus plant",
     price: 5,
     image: "http://localhost:8080/images/image1.jpg",
     description: "Handcrafted with crochet. Material: natural cotton.",
@@ -30,7 +30,7 @@ module.exports = [
   {
     id: 5,
     name: "A & C rabbit",
-    price: 8,
+    price: 9,
     image: "http://localhost:8080/images/image4.jpg",
     description: "Handcrafted with crochet. Material: natural cotton.",
   },
@@ -44,21 +44,21 @@ module.exports = [
   {
     id: 7,
     name: "Baby shoes",
-    price: 7,
+    price: 8,
     image: "http://localhost:8080/images/image6.jpg",
     description: "Handcrafted with crochet. Material: natural cotton.",
   },
   {
     id: 8,
     name: "Baby hat",
-    price: 7,
+    price: 5,
     image: "http://localhost:8080/images/image7.jpg",
     description: "Handcrafted with crochet. Material: natural cotton.",
   },
   {
     id: 9,
     name: "Gloves",
-    price: 7,
+    price: 6,
     image: "http://localhost:8080/images/image8.jpg",
     description: "Handcrafted with crochet. Material: natural cotton.",
   },

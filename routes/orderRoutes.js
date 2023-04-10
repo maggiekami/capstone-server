@@ -2,19 +2,13 @@ const knex = require("knex")(require("../knexfile"));
 const express = require("express");
 const app = express();
 const router = express.Router();
-
 app.use(express.json());
 
-// app.use(express.static(__dirname));
-// app.use(express.urlencoded());
 app.use(express.urlencoded({ extended: true }));
 
 router.post("/", async (req, res) => {
-  // add validation
-
   try {
     const newOrderDetails = await knex("order").insert({
-      //   user_id: "MAKE USER ID OF HERE",
       address: req.body.address,
       fName: req.body.fName,
       lName: req.body.lName,
